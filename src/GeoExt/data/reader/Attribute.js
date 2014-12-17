@@ -159,7 +159,12 @@ Ext.define('GeoExt.data.reader.Attribute', {
             if (this.keepRaw) {
                 this.raw = result;
             }
-            attributes = result.featureTypes[0].properties;
+            
+                if (Object.keys(result).length === 0){
+                    return null;
+                }
+                attributes = result.featureTypes[0].properties;
+            
         }
         var feature = this.feature;
         var fields = this.model.prototype.fields;
